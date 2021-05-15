@@ -12,10 +12,20 @@ var (
 	users = map[int64]*User{
 		123: {ID: 123, FirstName: "Lee", LastName: "temp", Email: "temp@gmail.com"},
 	}
+	UserDao userDaoInterface
 )
 
+func init(){
+	UserDao = &userDao{}
+}
+type userDao struct{}
+
+type userDaoInterface interface{
+	GetUser(int64) (*User, *utils.ApplicationErr)
+}
+
 // GetUser Dao to get user from data base
-func GetUser(userID int64) (*User, *utils.ApplicationErr) {
+func (u userDao) GetUser(userID int64) (*User, *utils.ApplicationErr) {
 
 	if user := users[userID]; user != nil {
 		log.Printf("User Found with id: %v", userID)
