@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/kirankothule/golang-servies/mvc/app"
+	"github.com/kirankothule/golang-microservice/mvc/app"
 )
+
 func main() {
-	StartApp()
+	app.StartApp()
 }
